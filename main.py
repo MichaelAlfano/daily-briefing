@@ -9,14 +9,14 @@ def main():
     email_service = EmailServices()
 
     # Data for the report
-    assets = {
+    assets = [
         {"account": "Savings Account", "amount": 237000.82, "change": 5554.25},
         {"account": "Checking Account", "amount": 34216.37, "change": 2164.84},
-    }
+    ]
 
-    liabilities = {
+    liabilities = [
         {"account": "Credit Card", "amount": -1263.24, "change": -62.14},
-    }
+    ]
 
     transactions = [
         {"account": "Checking Account", "amount": -54.12, "description": "Grocery Store", "date": "1/6"},
