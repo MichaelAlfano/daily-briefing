@@ -1,0 +1,32 @@
+name: Send Daily Email
+
+on:
+  schedule:
+    # Runs at 11 AM UTC, 6 AM EST every day
+    - cron: '0 11 * * *'
+
+jobs:
+  send_email_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11.7'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run the email script
+      run: python main.py
+      env:
+        SEND_TO: ${{ secrets.SEND_TO_EMAIL }}
+        EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+        SMTP_PORT: ${{ secrets.SMTP_PORT }}
