@@ -37,22 +37,22 @@ class EmailServices:
         # Function to generate table rows for dictionary data
         def generate_asset_table_rows(data):
             return "\n".join(
-                [f"<tr>
+                [f"""<tr>
                     <td>{item['account']}</td>
                     <td>${format_number(item['amount'])} ({format_number(item['change'], True)})</td>
-                    </tr>" for item in data
+                    </tr>""" for item in data
                 ]
             )
 
         # Function to generate table rows for list of dictionary data
         def generate_transaction_table_rows(data):
             return "\n".join(
-                [f"<tr>
+                [f"""<tr>
                     <td>{item['date']}</td>
                     <td>{item['account']}</td>
                     <td>{item['description']}</td>
                     <td>${item['amount']}</td>
-                    </tr>" for item in data
+                    </tr>""" for item in data
                 ]
             )
 
