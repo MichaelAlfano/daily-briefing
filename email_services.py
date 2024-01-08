@@ -50,9 +50,9 @@ class EmailServices:
         )
         return html_content
 
-    def send_email(self, recipient_email, subject, html_content):
+    def send_email(self, recipient_email, subject, html_content, sender_name="Personal Assistant"):
         message = MIMEMultipart("alternative")
-        message['From'] = self.sender_email
+        message['From'] = f"{sender_name} <{self.sender_email}>"
         message['To'] = recipient_email
         message['Subject'] = subject
 
