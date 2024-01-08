@@ -27,7 +27,7 @@ jobs:
     - name: Run the email script
       run: python main.py
       env:
-        SEND_TO: ${{ secrets.SEND_TO_EMAIL }}
+        SEND_TO: ${{ secrets.SEND_TO }}
         EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
