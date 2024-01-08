@@ -49,9 +49,9 @@ class EmailServices:
             return "\n".join(
                 [f"""<tr>
                     <td>{item['date']}</td>
-                    <td>{item['account']}</td>
                     <td>{item['description']}</td>
                     <td>${item['amount']}</td>
+                    <td>{item['account']}</td>
                     </tr>""" for item in data
                 ]
             )

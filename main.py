@@ -1,4 +1,5 @@
 import os
+import pytz
 from dotenv import load_dotenv
 from email_services import EmailServices
 from datetime import datetime
@@ -38,8 +39,16 @@ def main():
         print("Recipient email not set in environment variables.")
         return
 
-    current_date = datetime.now().strftime('%b %d')
-    email_subject = f"[{current_date}] Financial Report  - {datetime.now().strftime('%H:%M:%S')}"
+    # Current UTC time
+    utc_now = datetime.utcnow()
+
+    # Convert UTC to EST
+    est = pytz.timezone('America/New_York')
+    est_time = utc_now.replace(tzinfo=pytz.utc).astimezone(est)
+
+    current_date = est_time.strftime('%b %d')
+    email_subject = f"[{current_date}] Daily Briefing  - {est_time.strftime('%H:%M:%S')}"
+
     response = email_service.send_email(recipient_email, email_subject, html_report)
 
     print(response)
