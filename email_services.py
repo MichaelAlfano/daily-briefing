@@ -30,13 +30,30 @@ class EmailServices:
         return inlined_html
     
     def generate_html_content(self, template_path, css_path, assets, liabilities, transactions):
+        def format_number(value, sign=False):
+            return "{:+,.2f}".format(value) if sign else "{:,.2f}".format(value)
+        
         # Function to generate table rows for dictionary data
-        def generate_dict_table_rows(data):
-            return "\n".join([f"<tr><td>{key}</td><td>${value}</td></tr>" for key, value in data.items()])
+        def generate_asset_table_rows(data):
+            return "\n".join(
+                [f"<tr>
+                    <td>{item['account']}</td>
+                    <td>${format_number(item['amount'])} ({format_number(item['change'], True)})</td>
+                    </tr>" for item in data
+                ]
+            )
 
         # Function to generate table rows for list of dictionary data
-        def generate_list_table_rows(data):
-            return "\n".join([f"<tr><td>{item['account']}</td><td>{item['date']}</td><td>{item['description']}</td><td>${item['amount']}</td></tr>" for item in data])
+        def generate_transaction_table_rows(data):
+            return "\n".join(
+                [f"<tr>
+                    <td>{item['date']}</td>
+                    <td>{item['account']}</td>
+                    <td>{item['description']}</td>
+                    <td>${item['amount']}</td>
+                    </tr>" for item in data
+                ]
+            )
 
         # Inline CSS into the HTML template
         html_template_str = self.inline_css(template_path, css_path)
@@ -44,9 +61,9 @@ class EmailServices:
         # Replace placeholders in the template with actual data using string.Template
         html_template = Template(html_template_str)
         html_content = html_template.substitute(
-            assets=generate_dict_table_rows(assets),
-            liabilities=generate_dict_table_rows(liabilities),
-            transactions=generate_list_table_rows(transactions)
+            assets=generate_asset_table_rows(assets),
+            liabilities=generate_asset_table_rows(liabilities),
+            transactions=generate_transaction_table_rows(transactions)
         )
         return html_content
 

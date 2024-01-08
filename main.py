@@ -10,18 +10,18 @@ def main():
 
     # Data for the report
     assets = {
-        "Savings Account": 237000.50,
-        "Checking Account": 34216.75
+        {"account": "Savings Account", "amount": 237000.82, "change": 5554.25},
+        {"account": "Checking Account", "amount": 34216.37, "change": 2164.84},
     }
 
     liabilities = {
-        "Credit Card": -1263.24
+        {"account": "Credit Card", "amount": -1263.24, "change": -62.14},
     }
 
     transactions = [
-        {"account": "Checking Account", "amount": -54.12, "description": "Grocery Store", "date": "2024-01-06"},
-        {"account": "Savings Account", "amount": -102.07, "description": "Online Transfer", "date": "2024-01-05"},
-        {"account": "Credit Card", "amount": 62.14, "description": "Restaurant", "date": "2024-01-04"}
+        {"account": "Checking Account", "amount": -54.12, "description": "Grocery Store", "date": "1/6"},
+        {"account": "Savings Account", "amount": -102.07, "description": "Online Transfer", "date": "1/5"},
+        {"account": "Credit Card", "amount": -62.14, "description": "Restaurant", "date": "1/4"}
     ]
 
     # Paths to the HTML template and CSS files
