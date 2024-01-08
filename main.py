@@ -47,7 +47,7 @@ def main():
     est_time = utc_now.replace(tzinfo=pytz.utc).astimezone(est)
 
     current_date = est_time.strftime('%b %d')
-    email_subject = f"[{current_date}] Daily Briefing  - {est_time.strftime('%H:%M:%S')}"
+    email_subject = f"[{current_date}] Daily Briefing  - {est_time.strftime('%I:%M %p')}"
 
     response = email_service.send_email(recipient_email, email_subject, html_report)
 
