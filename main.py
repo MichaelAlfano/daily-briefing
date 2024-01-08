@@ -1,8 +1,8 @@
 import os
-import pytz
 from dotenv import load_dotenv
 from email_services import EmailServices
-from datetime import datetime
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 load_dotenv()
 
@@ -40,14 +40,13 @@ def main():
         return
 
     # Current UTC time
-    utc_now = datetime.utcnow()
+    utc_now = datetime.now(timezone.utc)
 
-    # Convert UTC to EST
-    est = pytz.timezone('America/New_York')
-    est_time = utc_now.replace(tzinfo=pytz.utc).astimezone(est)
+    # Convert UTC to EST using zoneinfo
+    est_time = utc_now.astimezone(ZoneInfo("America/New_York"))
 
     current_date = est_time.strftime('%b %d')
-    email_subject = f"[{current_date}] Daily Briefing  - {est_time.strftime('%I:%M %p')}"
+    email_subject = f"[{current_date}] Daily Briefing  - {est_time.strftime('%-I:%M %p')}"
 
     response = email_service.send_email(recipient_email, email_subject, html_report)
 

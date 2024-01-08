@@ -9,8 +9,7 @@ body {
 }
 
 .container {
-    width: 100%-40px;
-    max-width: 1000px;
+    max-width: 800px;
     margin: auto;
     overflow: hidden;
     background: white;
@@ -24,33 +23,17 @@ h1 {
 
 h2 {
     color: #000000;
-    padding-left: 12px;
-}
-
-.grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.grid-item {
-    flex: 1;
-    min-width: calc(50% - 20px);
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-table, td {
+td {
     border-bottom: 1px solid #ddd;
-}
-
-th, td {
     text-align: left;
-    padding: 12px;
+    /* padding: 12px 0px; */
     white-space: nowrap
 }
 
@@ -58,17 +41,7 @@ td:last-child {
     text-align: right;
 }
 
-th {
-    background-color: #f0f8ff;
-}
-
-/* tr:nth-child(even) {
+/* tr:nth-child(odd) {
     background-color: #f2f2f2;
+    border-radius: 8px;
 } */
-
-/* Media Query for smaller screens */
-@media (max-width: 600px) {
-    .grid-item {
-        min-width: 100%;
-    }
-}
