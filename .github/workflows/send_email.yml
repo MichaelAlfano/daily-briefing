@@ -4,6 +4,7 @@ on:
   schedule:
     # Runs at 11 AM UTC, 6 AM EST every day
     - cron: '0 11 * * *'
+  workflow_dispatch:
 
 jobs:
   send_email_job:
