@@ -30,6 +30,7 @@ class EmailServices:
         return inlined_html
     
     def generate_html_content(self, template_path, css_path, assets, liabilities, transactions):
+        # 100,000.00 or +100,000.00
         def format_number(value, sign=False):
             return "{:+,.2f}".format(value) if sign else "{:,.2f}".format(value)
         
