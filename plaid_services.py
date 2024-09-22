@@ -6,31 +6,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Removed from main
-
-# from plaid_services import PlaidServices
-# from token_util import get_plaid_access_token, set_plaid_access_token
-
-    # plaid_service = PlaidServices()
-
-    # access_token = get_plaid_access_token()
-
-    # if not access_token:
-    #     email_service.send_email("your_email@example.com", "Re-authentication Required", 
-    #                              "Please re-authenticate to obtain a new Plaid access token.")
-    #     return
-
-    # try:
-    #     balances = plaid_service.get_account_balances(access_token)
-    #     transactions = plaid_service.get_transactions(access_token)
-    #     report = f"Balances: {balances}\nTransactions: {transactions}"
-    #     email_service.send_email("your_email@example.com", "Daily Financial Report", "Your daily financial report is attached.", report)
-    # except Exception as e:
-    #     email_service.send_email("your_email@example.com", "Error", 
-    #                              f"Failed to fetch data: {e}. Please re-authenticate.")
-    #     set_plaid_access_token(None)
-
-
 class PlaidServices:
     def __init__(self):
         self.client_id = os.getenv('PLAID_CLIENT_ID')
